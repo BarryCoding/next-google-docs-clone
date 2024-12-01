@@ -53,3 +53,11 @@ npx shadcn@2.1.6 add --all
 ```zsh
 npm install -D prettier prettier-plugin-tailwindcss eslint-config-prettier --legacy-peer-deps
 ```
+## Project structure 
+
+[28:44](https://www.youtube.com/watch?v=gq2bbDmSokU&t=1724s)  
+
+- read [routing](https://nextjs.org/docs/app/building-your-application/routing)
+  - page.tsx / layout.tsx
+  - dynamic `[folderName]` / group `(folderName)`
+  - Link component
