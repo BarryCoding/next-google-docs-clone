@@ -157,6 +157,7 @@ body {
 
       > label {
         flex: 0 0 auto;
+        margin-top: 0.3rem;
         margin-right: 0.5rem;
         user-select: none;
       }

@@ -113,3 +113,16 @@ npm i @tiptap/extension-image@2.10.2 --legacy-peer-deps
 ```zsh
 npm i zustand@5.0.1 --legacy-peer-deps
 ```
+
+## Editor tools
+
+[01:44:38](https://www.youtube.com/watch?v=gq2bbDmSokU&t=6278s) 
+
+- more Toolbar functions
+  - redo | print | spellcheck(not working properly, lang problem?)
+  - [Marks](https://tiptap.dev/docs/editor/extensions/marks) bold | italic | underline([install](https://tiptap.dev/docs/editor/extensions/marks/underline)) | remove format
+  - comment | todo 
+
+```zsh
+npm i @tiptap/extension-underline@2.10.2 --legacy-peer-deps
+```
