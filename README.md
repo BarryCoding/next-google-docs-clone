@@ -79,3 +79,24 @@ npm i @tiptap/react@2.10.2 @tiptap/pm@2.10.2 @tiptap/starter-kit@2.10.2 --legacy
   - [starter-kit](https://tiptap.dev/docs/editor/extensions/functionality/starterkit)
 - style the editor and print mode
 
+## Tiptap extensions
+
+[01:02:28](https://www.youtube.com/watch?v=gq2bbDmSokU&t=3748s)  
+
+- custom tiptap extensions style in global css
+  - [styling](https://tiptap.dev/docs/editor/getting-started/style-editor)
+- extensions and add styles
+  - [heading](https://tiptap.dev/docs/editor/extensions/nodes/heading)
+  - [bullet-list](https://tiptap.dev/docs/editor/extensions/nodes/bullet-list)
+  - [+ task-list](https://tiptap.dev/docs/editor/extensions/nodes/task-list)
+  - [+ table](https://tiptap.dev/docs/editor/extensions/nodes/table)
+  - [+ image](https://tiptap.dev/docs/editor/extensions/nodes/image)
+    - no [- ImageResize](https://www.npmjs.com/package/tiptap-extension-resize-image) non official extension
+
+```zsh
+npm i @tiptap/extension-task-list@2.10.2 @tiptap/extension-task-item@2.10.2 --legacy-peer-deps
+
+npm i @tiptap/extension-table@2.10.2 @tiptap/extension-table-row@2.10.2 @tiptap/extension-table-header@2.10.2 @tiptap/extension-table-cell@2.10.2 --legacy-peer-deps
+
+npm i @tiptap/extension-image@2.10.2 --legacy-peer-deps
+```

@@ -2,6 +2,13 @@
 
 import { useEditor, EditorContent } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import TaskItem from '@tiptap/extension-task-item'
+import TaskList from '@tiptap/extension-task-list'
+import Table from '@tiptap/extension-table'
+import TableCell from '@tiptap/extension-table-cell'
+import TableHeader from '@tiptap/extension-table-header'
+import TableRow from '@tiptap/extension-table-row'
+import Image from '@tiptap/extension-image'
 
 export const Editor = () => {
   const editor = useEditor({
@@ -13,8 +20,36 @@ export const Editor = () => {
           'flex min-h-[1054px] w-[816px] cursor-text flex-col border border-[#c7c7c7] bg-white pb-10 pr-14 pt-10 focus:outline-none print:border-0',
       },
     },
-    extensions: [StarterKit], // https://tiptap.dev/docs/editor/extensions/functionality/starterkit
-    content: '<p>Hello World! 🌎️</p>',
+    extensions: [
+      StarterKit, // https://tiptap.dev/docs/editor/extensions/functionality/starterkit
+      TaskList,
+      TaskItem.configure({
+        nested: true,
+      }),
+      Table.configure({
+        resizable: true,
+      }),
+      TableRow,
+      TableHeader,
+      TableCell,
+      Image,
+    ],
+    content: `<p>Hello World! 🌎️</p>
+    <table>
+          <tbody>
+            <tr>
+              <th>Name</th>
+              <th colspan="3">Description</th>
+            </tr>
+            <tr>
+              <td>Cyndi Lauper</td>
+              <td>Singer</td>
+              <td>Songwriter</td>
+              <td>Actress</td>
+            </tr>
+          </tbody>
+        </table>
+    `,
   })
   return (
     // print style control with print:
