@@ -100,3 +100,9 @@ npm i @tiptap/extension-table@2.10.2 @tiptap/extension-table-row@2.10.2 @tiptap/
 
 npm i @tiptap/extension-image@2.10.2 --legacy-peer-deps
 ```
+
+## Editor store
+
+[01:26:49](https://www.youtube.com/watch?v=gq2bbDmSokU&t=5209s)  
+
+- toolbar.tsx
