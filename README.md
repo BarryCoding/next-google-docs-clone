@@ -61,3 +61,21 @@ npm install -D prettier prettier-plugin-tailwindcss eslint-config-prettier --leg
   - page.tsx / layout.tsx
   - dynamic `[folderName]` / group `(folderName)`
   - Link component
+
+## Tiptap editor
+
+[46:49](https://www.youtube.com/watch?v=gq2bbDmSokU&t=2809s)
+
+- editor.tsx
+
+- [install tiptap with nextjs](https://tiptap.dev/docs/editor/getting-started/install/nextjs)
+  - support react19 `--legacy-peer-deps` flag to remove error
+
+```zsh
+npm i @tiptap/react@2.10.2 @tiptap/pm@2.10.2 @tiptap/starter-kit@2.10.2 --legacy-peer-deps
+```
+
+- integration
+  - [starter-kit](https://tiptap.dev/docs/editor/extensions/functionality/starterkit)
+- style the editor and print mode
+
