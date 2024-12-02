@@ -126,3 +126,17 @@ npm i zustand@5.0.1 --legacy-peer-deps
 ```zsh
 npm i @tiptap/extension-underline@2.10.2 --legacy-peer-deps
 ```
+
+## Font family & headings tools (day2)2
+
+[01:58:18](https://www.youtube.com/watch?v=gq2bbDmSokU&t=7098s) 
+
+- FontFamilyButton 
+  - ui DropdownMenu
+  - [font-family](https://tiptap.dev/docs/editor/extensions/functionality/fontfamily) 
+  - with Mark [text-style](https://tiptap.dev/docs/editor/extensions/marks/text-style)
+  - select the text to change font family
+
+```zsh
+npm i @tiptap/extension-text-style@2.10.2 @tiptap/extension-font-family@2.10.2 --legacy-peer-deps
+```
