@@ -106,3 +106,10 @@ npm i @tiptap/extension-image@2.10.2 --legacy-peer-deps
 [01:26:49](https://www.youtube.com/watch?v=gq2bbDmSokU&t=5209s)  
 
 - toolbar.tsx
+- [zustand](https://zustand-demo.pmnd.rs/)
+  - use-editor-store.ts
+- [tip-tap history](https://tiptap.dev/docs/collaboration/documents/history)
+
+```zsh
+npm i zustand@5.0.1 --legacy-peer-deps
+```

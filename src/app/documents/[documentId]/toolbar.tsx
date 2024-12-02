@@ -1,5 +1,6 @@
 'use client'
 import { cn } from '@/lib/utils'
+import { useEditorStore } from '@/store/use-editor-store'
 import { Undo2Icon, type LucideIcon } from 'lucide-react'
 
 interface IconProps {
@@ -24,7 +25,11 @@ const ToolbarIcon = ({ onClick, isActive, icon: Icon }: IconProps) => {
 }
 
 export const Toolbar = () => {
-  const sections: IconProps[][] = [[{ label: 'undo', icon: Undo2Icon, onClick: () => {} }]]
+  const { editor } = useEditorStore()
+
+  const sections: IconProps[][] = [
+    [{ label: 'undo', icon: Undo2Icon, onClick: () => editor?.chain().focus().undo().run() }],
+  ]
   return (
     <div className='flex min-h-10 items-center gap-x-0.5 overflow-x-auto rounded-[24px] bg-[#f1f4f9] px-2.5 py-0.5'>
       {sections[0].map((item) => (
