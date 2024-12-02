@@ -140,3 +140,12 @@ npm i @tiptap/extension-underline@2.10.2 --legacy-peer-deps
 ```zsh
 npm i @tiptap/extension-text-style@2.10.2 @tiptap/extension-font-family@2.10.2 --legacy-peer-deps
 ```
+
+- HeadingLevelButton
+  - ui DropdownMenu
+  - [heading](https://tiptap.dev/docs/editor/extensions/nodes/heading)
+  - be consistent with global css h1 - h6
+
+```zsh
+npm i @tiptap/extension-heading@2.10.2 --legacy-peer-deps
+```
