@@ -1,4 +1,5 @@
 import { Editor } from './editor'
+import { Ruler } from './ruler'
 import { Toolbar } from './toolbar'
 
 /** nextjs 15: dynamic routing */
@@ -11,6 +12,7 @@ export default async function DocumentIdPage({ params }: DocumentIdPageProps) {
     <div className='gb-[#FAFBFD] min-h-screen'>
       <p className='hidden'>documentId: {documentId}</p>
       <Toolbar />
+      <Ruler />
       <Editor />
     </div>
   )

@@ -216,3 +216,12 @@ npm i @tiptap/extension-text-align@2.10.2 --legacy-peer-deps
 - line-height.ts
 - LineHeightButton
 - recommend cursor ai-editor
+
+## Margin ruler component
+
+[03:32:55](https://www.youtube.com/watch?v=gq2bbDmSokU&t=12775s) 
+
+- ruler.tsx
+  - Ruler 
+    - more accurate!
+  - Marker
