@@ -225,3 +225,15 @@ npm i @tiptap/extension-text-align@2.10.2 --legacy-peer-deps
   - Ruler 
     - more accurate!
   - Marker
+
+## Navigation bar component
+
+[03:59:42](https://www.youtube.com/watch?v=gq2bbDmSokU&t=14382s) 
+
+- public/logo.svg
+- navbar.tsx
+  - document-input.tsx
+
+```zsh
+npm i react-icons@5.3.0 --legacy-peer-deps
+```
