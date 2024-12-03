@@ -199,3 +199,12 @@ npm i @tiptap/extension-text-align@2.10.2 --legacy-peer-deps
 - ListButton
   - [bullet-list](https://tiptap.dev/docs/editor/extensions/nodes/bullet-list)
   - [ordered-list](https://tiptap.dev/docs/editor/extensions/nodes/ordered-list)
+
+## Font size tool (custom extension)
+
+[03:00:03](https://www.youtube.com/watch?v=gq2bbDmSokU&t=10803s) 
+
+- [new extension](https://tiptap.dev/docs/editor/extensions/custom-extensions/create-new)
+  - [example](https://github.com/ueberdosis/tiptap/blob/main/packages/extension-text-align/src/text-align.ts)
+- font-size.ts
+- FontSizeButton
