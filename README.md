@@ -127,7 +127,7 @@ npm i zustand@5.0.1 --legacy-peer-deps
 npm i @tiptap/extension-underline@2.10.2 --legacy-peer-deps
 ```
 
-## Font family & headings tools (day2)2
+## Font family & headings tools
 
 [01:58:18](https://www.youtube.com/watch?v=gq2bbDmSokU&t=7098s) 
 
@@ -148,4 +148,23 @@ npm i @tiptap/extension-text-style@2.10.2 @tiptap/extension-font-family@2.10.2 -
 
 ```zsh
 npm i @tiptap/extension-heading@2.10.2 --legacy-peer-deps
+```
+
+## Color tools (text & highlight)
+
+[02:19:05](https://www.youtube.com/watch?v=gq2bbDmSokU&t=8345s) 
+
+- TextColorButton
+  - [react-color](https://casesandberg.github.io/react-color/)
+  - [Functionality Color](https://tiptap.dev/docs/editor/extensions/functionality/color)
+- TextHighlightButton 
+  - [Marks Highlight](https://tiptap.dev/docs/editor/extensions/marks/highlight)
+    - configure multicolor
+
+```zsh
+npm i react-color@2.19.3 --legacy-peer-deps
+npm i --save-dev @types/react-color@3.0.12  --legacy-peer-deps
+
+npm i @tiptap/extension-color@2.10.2 --legacy-peer-deps
+npm i @tiptap/extension-highlight@2.10.2 --legacy-peer-deps
 ```

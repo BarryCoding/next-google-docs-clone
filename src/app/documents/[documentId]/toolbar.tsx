@@ -1,6 +1,7 @@
 'use client'
 
 import { type Level } from '@tiptap/extension-heading'
+import { type ColorResult, SwatchesPicker } from 'react-color'
 
 import {
   DropdownMenu,
@@ -11,8 +12,10 @@ import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 import { useEditorStore } from '@/store/use-editor-store'
 import {
+  BaselineIcon,
   BoldIcon,
   ChevronDownIcon,
+  HighlighterIcon,
   ItalicIcon,
   ListTodoIcon,
   MessageSquarePlusIcon,
@@ -126,6 +129,52 @@ const HeadingLevelButton = () => {
   )
 }
 
+const TextColorButton = () => {
+  const { editor } = useEditorStore()
+
+  const color = editor?.getAttributes('textStyle').color || '#000000'
+
+  const onChange = (color: ColorResult) => {
+    editor?.chain().focus().setColor(color.hex).run()
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className='flex h-7 min-w-7 shrink-0 flex-col items-center justify-center overflow-hidden rounded-sm px-1.5 text-sm hover:bg-neutral-200/80'>
+          <BaselineIcon className='size-4' style={{ color: color }} />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className='p-0'>
+        <SwatchesPicker color={color} onChange={onChange} />
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
+const HighlightColorButton = () => {
+  const { editor } = useEditorStore()
+  const color = editor?.getAttributes('highlight').color || '#FFFFFFFF'
+
+  const onChange = (color: ColorResult) => {
+    console.log(`🔎 🔍 ~ onChange ~ color:`, color)
+    editor?.commands.setHighlight({ color: color.hex })
+  }
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <button className='flex h-7 min-w-7 shrink-0 flex-col items-center justify-center overflow-hidden rounded-sm px-1.5 text-sm hover:bg-neutral-200/80'>
+          <HighlighterIcon className='size-4' />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className='p-0'>
+        <SwatchesPicker color={color} onChange={onChange} />
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
 interface IconProps {
   label: string
   onClick?: () => void
@@ -216,10 +265,11 @@ export const Toolbar = () => {
 
       <Separator orientation='vertical' className='h-6 bg-neutral-300' />
 
+      <TextColorButton />
+      <HighlightColorButton />
       {sections[1].map((item) => (
         <ToolbarIcon key={item.label} {...item} />
       ))}
-
       <Separator orientation='vertical' className='h-6 bg-neutral-300' />
 
       {sections[2].map((item) => (
