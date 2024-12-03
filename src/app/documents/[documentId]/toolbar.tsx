@@ -6,6 +6,7 @@ import { type ColorResult, SwatchesPicker } from 'react-color'
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Separator } from '@/components/ui/separator'
@@ -16,6 +17,7 @@ import {
   BoldIcon,
   ChevronDownIcon,
   HighlighterIcon,
+  ImageIcon,
   ItalicIcon,
   Link2Icon,
   ListTodoIcon,
@@ -25,6 +27,7 @@ import {
   RemoveFormattingIcon,
   UnderlineIcon,
   Undo2Icon,
+  UploadIcon,
   type LucideIcon,
 } from 'lucide-react'
 import { useState } from 'react'
@@ -57,17 +60,17 @@ const FontFamilyButton = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent className='flex flex-col gap-y-1 p-1'>
         {fonts.map(({ label, value }) => (
-          <button
+          <DropdownMenuItem
             onClick={() => editor?.chain().focus().setFontFamily(value).run()}
             key={value}
             className={cn(
               'flex items-center gap-x-2 rounded-sm px-2 py-1 hover:bg-neutral-200/80',
-              editor?.isActive('textStyle', { fontFamily: value }) && 'bg-neutral-200/80',
+              editor?.isActive('textStyle', { fontFamily: value }) && 'bg-accent',
             )}
             style={{ fontFamily: value }}
           >
             <span className='text-sm'>{label}</span>
-          </button>
+          </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
@@ -179,6 +182,7 @@ const HighlightColorButton = () => {
   )
 }
 
+// TODO: close after submit
 const LinkButton = () => {
   const { editor } = useEditorStore()
   const [href, setHref] = useState('')
@@ -210,6 +214,70 @@ const LinkButton = () => {
         <Button onClick={() => onChange(href)}>Apply</Button>
       </DropdownMenuContent>
     </DropdownMenu>
+  )
+}
+
+// TODO: close after submit
+const ImageButton = () => {
+  const { editor } = useEditorStore()
+  const [imageUrl, setImageUrl] = useState('')
+
+  const onChange = (src: string) => {
+    editor?.chain().focus().setImage({ src }).run()
+  }
+
+  const onUpload = () => {
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = 'image/*'
+
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0]
+      if (file) {
+        const imageUrl = URL.createObjectURL(file)
+        onChange(imageUrl)
+      }
+    }
+
+    input.click()
+  }
+
+  const handleImageUrlSubmit = () => {
+    if (imageUrl) {
+      onChange(imageUrl)
+      setImageUrl('')
+    }
+  }
+
+  return (
+    <>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <button className='flex h-7 min-w-7 shrink-0 flex-col items-center justify-center overflow-hidden rounded-sm px-1.5 text-sm hover:bg-neutral-200/80'>
+            <ImageIcon className='size-4' />
+          </button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent className='flex flex-col gap-y-2.5 p-2.5'>
+          <div className='flex items-center gap-x-2'>
+            <Input
+              placeholder='Input image URL'
+              onChange={(e) => setImageUrl(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleImageUrlSubmit()
+                }
+              }}
+            />
+            <Button onClick={handleImageUrlSubmit}>Apply</Button>
+          </div>
+
+          <Button className='flex w-full items-center gap-x-2' onClick={onUpload}>
+            <UploadIcon className='mr-2 size-4' />
+            Upload Image
+          </Button>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </>
   )
 }
 
@@ -311,6 +379,7 @@ export const Toolbar = () => {
       <Separator orientation='vertical' className='h-6 bg-neutral-300' />
 
       <LinkButton />
+      <ImageButton />
 
       {sections[2].map((item) => (
         <ToolbarIcon key={item.label} {...item} />

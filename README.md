@@ -180,3 +180,6 @@ npm i @tiptap/extension-highlight@2.10.2 --legacy-peer-deps
 ```zsh
 npm i @tiptap/extension-link@2.10.2 --legacy-peer-deps
 ```
+
+- ImageButton
+  - input file hidden
