@@ -169,7 +169,7 @@ npm i @tiptap/extension-color@2.10.2 --legacy-peer-deps
 npm i @tiptap/extension-highlight@2.10.2 --legacy-peer-deps
 ```
 
-## Link and image tools (day2)
+## Link and image tools
 
 [02:33:26](https://www.youtube.com/watch?v=gq2bbDmSokU&t=9206s) 
 
@@ -183,3 +183,19 @@ npm i @tiptap/extension-link@2.10.2 --legacy-peer-deps
 
 - ImageButton
   - input file hidden
+
+## Align and list tools
+
+[02:51:23](https://www.youtube.com/watch?v=gq2bbDmSokU&t=10283s) 
+
+- AlignButton
+  - [text-align](https://tiptap.dev/docs/editor/extensions/functionality/textalign)
+    - configure
+
+```zsh
+npm i @tiptap/extension-text-align@2.10.2 --legacy-peer-deps
+```
+
+- ListButton
+  - [bullet-list](https://tiptap.dev/docs/editor/extensions/nodes/bullet-list)
+  - [ordered-list](https://tiptap.dev/docs/editor/extensions/nodes/ordered-list)
