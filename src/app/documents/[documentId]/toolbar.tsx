@@ -34,6 +34,7 @@ import {
   PrinterIcon,
   Redo2Icon,
   RemoveFormattingIcon,
+  StrikethroughIcon,
   UnderlineIcon,
   Undo2Icon,
   UploadIcon,
@@ -573,6 +574,12 @@ export const Toolbar = () => {
         icon: UnderlineIcon,
         isActive: editor?.isActive('underline'),
         onClick: () => editor?.chain().focus().toggleUnderline().run(),
+      },
+      {
+        label: 'strike',
+        icon: StrikethroughIcon,
+        isActive: editor?.isActive('strike'),
+        onClick: () => editor?.chain().focus().toggleStrike().run(),
       },
       {
         label: 'remove format',

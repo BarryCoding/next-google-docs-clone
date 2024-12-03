@@ -237,3 +237,9 @@ npm i @tiptap/extension-text-align@2.10.2 --legacy-peer-deps
 ```zsh
 npm i react-icons@5.3.0 --legacy-peer-deps
 ```
+
+## Navigation bar tools
+
+[04:23:57](https://www.youtube.com/watch?v=gq2bbDmSokU&t=15837s) 
+
+- bad save functionalities

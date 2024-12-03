@@ -36,23 +36,51 @@ import {
 import { BsFilePdf } from 'react-icons/bs'
 import { useEditorStore } from '@/store/use-editor-store'
 
-interface TableParams {
-  rows: number
-  cols: number
-}
-
 export const Navbar = () => {
   const { editor } = useEditorStore()
+  console.log(`🔎 🔍 ~ Navbar ~ editor:`, editor)
 
-  const onSaveJSON = () => {}
-  const onSaveHTML = () => {}
-  const onSaveText = () => {}
+  // download function is very limited!
+  const onDownload = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = filename
+    a.click()
+  }
+
+  const onSaveJSON = () => {
+    if (!editor) return
+
+    const content = editor.getJSON()
+    const blob = new Blob([JSON.stringify(content)], {
+      type: 'application/json',
+    })
+    onDownload(blob, `jsonDoc.json`)
+  }
+  const onSaveHTML = () => {
+    if (!editor) return
+
+    const content = editor.getHTML()
+    const blob = new Blob([content], {
+      type: 'text/html',
+    })
+    onDownload(blob, `htmlDoc.html`)
+  }
+  const onSaveText = () => {
+    if (!editor) return
+
+    const content = editor.getText()
+    const blob = new Blob([content], {
+      type: 'text/plain',
+    })
+    onDownload(blob, `txtDoc.txt`)
+  }
 
   const onNewDocument = () => {}
 
-  const insertTable = ({ rows, cols }: TableParams) => {
-    console.log(`🔎 🔍 ~ insertTable ~ cols:`, cols)
-    console.log(`🔎 🔍 ~ insertTable ~ rows:`, rows)
+  const insertTable = ({ rows, cols }: { rows: number; cols: number }) => {
+    editor?.chain().focus().insertTable({ rows, cols, withHeaderRow: false }).run()
   }
 
   return (
@@ -184,9 +212,7 @@ export const Navbar = () => {
                       </MenubarItem>
                       <MenubarItem onClick={() => editor?.chain().focus().toggleStrike().run()}>
                         <StrikethroughIcon className='mr-2 size-4' />
-                        <span>
-                          Strikethrough&nbsp;&nbsp;
-                        </span> <MenubarShortcut>⌘S</MenubarShortcut>
+                        Strike <MenubarShortcut>⌘S</MenubarShortcut>
                       </MenubarItem>
                     </MenubarSubContent>
                   </MenubarSub>
