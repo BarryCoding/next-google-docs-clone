@@ -17,6 +17,7 @@ import {
   ChevronDownIcon,
   HighlighterIcon,
   ItalicIcon,
+  Link2Icon,
   ListTodoIcon,
   MessageSquarePlusIcon,
   PrinterIcon,
@@ -26,6 +27,9 @@ import {
   Undo2Icon,
   type LucideIcon,
 } from 'lucide-react'
+import { useState } from 'react'
+import { Input } from '@/components/ui/input'
+import { Button } from '@/components/ui/button'
 
 // REFACTOR: SEPARATE buttons
 
@@ -175,6 +179,40 @@ const HighlightColorButton = () => {
   )
 }
 
+const LinkButton = () => {
+  const { editor } = useEditorStore()
+  const [href, setHref] = useState('')
+
+  const onChange = (href: string) => {
+    editor?.chain().focus().extendMarkRange('link').setLink({ href }).run()
+    setHref('')
+  }
+
+  return (
+    <DropdownMenu
+      onOpenChange={(open) => {
+        if (open) {
+          setHref(editor?.getAttributes('link').href || '')
+        }
+      }}
+    >
+      <DropdownMenuTrigger asChild>
+        <button className='flex h-7 min-w-7 shrink-0 flex-col items-center justify-center overflow-hidden rounded-sm px-1.5 text-sm hover:bg-neutral-200/80'>
+          <Link2Icon className='size-4' />
+        </button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent className='flex items-center gap-x-2 p-2.5'>
+        <Input
+          placeholder='https://example.com'
+          value={href}
+          onChange={(e) => setHref(e.target.value)}
+        />
+        <Button onClick={() => onChange(href)}>Apply</Button>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
+
 interface IconProps {
   label: string
   onClick?: () => void
@@ -271,6 +309,8 @@ export const Toolbar = () => {
         <ToolbarIcon key={item.label} {...item} />
       ))}
       <Separator orientation='vertical' className='h-6 bg-neutral-300' />
+
+      <LinkButton />
 
       {sections[2].map((item) => (
         <ToolbarIcon key={item.label} {...item} />

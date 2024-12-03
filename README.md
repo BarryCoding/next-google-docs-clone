@@ -168,3 +168,15 @@ npm i --save-dev @types/react-color@3.0.12  --legacy-peer-deps
 npm i @tiptap/extension-color@2.10.2 --legacy-peer-deps
 npm i @tiptap/extension-highlight@2.10.2 --legacy-peer-deps
 ```
+
+## Link and image tools (day2)
+
+[02:33:26](https://www.youtube.com/watch?v=gq2bbDmSokU&t=9206s) 
+
+- LinkButton
+  - [Link](https://tiptap.dev/docs/editor/extensions/marks/link)
+  - configure & global css
+
+```zsh
+npm i @tiptap/extension-link@2.10.2 --legacy-peer-deps
+```
