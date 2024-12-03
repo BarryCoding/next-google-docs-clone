@@ -208,3 +208,11 @@ npm i @tiptap/extension-text-align@2.10.2 --legacy-peer-deps
   - [example](https://github.com/ueberdosis/tiptap/blob/main/packages/extension-text-align/src/text-align.ts)
 - font-size.ts
 - FontSizeButton
+
+## Line height tool (custom extension)
+
+[03:19:40](https://www.youtube.com/watch?v=gq2bbDmSokU&t=11980s) 
+
+- line-height.ts
+- LineHeightButton
+- recommend cursor ai-editor
