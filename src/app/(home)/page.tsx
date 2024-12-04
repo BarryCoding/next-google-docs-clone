@@ -28,7 +28,6 @@ export default function Home() {
       <div className='mt-16'>
         <TemplatesGallery />
         <DocumentsTable documents={results} loadMore={loadMore} status={status} />
-        {results?.map((d) => d.title)}
       </div>
     </div>
   )

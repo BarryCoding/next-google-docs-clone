@@ -330,7 +330,7 @@ npm run convex
 npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
 ```
 
-## Create and list documents  (day4)
+## Create and list documents
 
 [05:51:27](https://www.youtube.com/watch?v=gq2bbDmSokU&t=21087s) 
 
@@ -345,3 +345,16 @@ npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
 - documents-table.tsx
   - ui table
   - DocumentRow
+
+## Update and delete documents
+
+[06:19:00](https://www.youtube.com/watch?v=gq2bbDmSokU&t=22740s) 
+
+- DocumentMenu
+  - ui dropdown menu
+- convex/documents `removeById` `updateById`
+- rename-dialog
+  - ui Dialog
+  - conflicts with dropdown and dialog `modals`
+- remove-dialog
+  - ui AlertDialog
