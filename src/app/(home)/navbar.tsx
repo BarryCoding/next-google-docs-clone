@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { Search } from './search'
+import { UserButton } from '@clerk/nextjs'
 
 export const Navbar = () => {
   return (
@@ -13,7 +14,9 @@ export const Navbar = () => {
         <h3 className='text-xl'>Docs</h3>
       </div>
       <Search />
-      <div className='flex items-center gap-3 pl-6'>{/* TODO: user */}</div>
+      <div className='flex items-center gap-3 pl-6'>
+        <UserButton />
+      </div>
     </nav>
   )
 }

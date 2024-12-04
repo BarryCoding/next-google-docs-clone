@@ -303,3 +303,29 @@ npm run convex
   - query `get`
 - (home)/page.tsx 
   - useQuery
+
+## Authentication setup (Clerk)
+
+- TODO: Next.js + Convex + Clerk Diagram
+
+[05:33:29](https://www.youtube.com/watch?v=gq2bbDmSokU&t=20009s) 
+
+- [Convex + Clerk](https://docs.convex.dev/auth/clerk) + [Next.js + Clerk](https://clerk.com/docs/quickstarts/nextjs)
+  - create application
+  - follow its framework steps
+    - install `@clerk/nextjs`
+    - add env variables
+    - src/middleware.ts
+  - Create a JWT Template
+    - Clerk dashboard app -> Configure -> JWT templates -> `convex` -> save
+    - Do NOT rename the JWT token, it must be called `convex`
+    - Copy the Issuer URL
+  - Create the auth config
+    - auth.config.ts
+  - modify convex-client-provider
+    - fullscreen-loader.tsx
+  - navbar + UserIcon
+
+```bash
+npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
+```
