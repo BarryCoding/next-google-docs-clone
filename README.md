@@ -329,3 +329,12 @@ npm run convex
 ```bash
 npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
 ```
+
+## Create and list documents  (day4)
+
+[05:51:27](https://www.youtube.com/watch?v=gq2bbDmSokU&t=21087s) 
+
+- convex/documents `create`
+  - TODO: integration with [tanstack](https://docs.convex.dev/client/tanstack-query)
+- templates-gallery.tsx
+  - useMutation() create doc

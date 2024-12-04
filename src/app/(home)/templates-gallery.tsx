@@ -10,15 +10,27 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/ui/carousel'
+import { useMutation } from 'convex/react'
 import { templates } from '@/constants/templates'
+import { api } from 'db/_generated/api'
+import { useRouter } from 'next/navigation'
 
 export const TemplatesGallery = () => {
+  const router = useRouter()
   const [isCreating, setIsCreating] = useState(false)
+  const createDocument = useMutation(api.google_docs_documents.create)
 
   const onTemplateClick = (title: string, initialContent: string) => {
-    console.log(`🔎 🔍 ~ onTemplateClick ~ initialContent:`, initialContent)
-    console.log(`🔎 🔍 ~ onTemplateClick ~ title:`, title)
     setIsCreating(true)
+    createDocument({ title, initialContent })
+      .then((documentId) => {
+        // toast.success('Document created')
+        router.push(`/documents/${documentId}`)
+      })
+      // .catch(() => toast.error('Something went wrong'))
+      .finally(() => {
+        setIsCreating(false)
+      })
   }
 
   return (
