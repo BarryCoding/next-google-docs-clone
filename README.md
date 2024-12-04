@@ -243,3 +243,17 @@ npm i react-icons@5.3.0 --legacy-peer-deps
 [04:23:57](https://www.youtube.com/watch?v=gq2bbDmSokU&t=15837s) 
 
 - bad save functionalities
+
+## Search input component
+
+[04:35:01](https://www.youtube.com/watch?v=gq2bbDmSokU&t=16501s) 
+
+update project structure:
+
+- root layout.tsx 
+  - font: Inter
+  - [nuqs](https://nuqs.47ng.com/) -> layout.tsx
+
+```zsh
+npm i nuqs@2.2.3 --legacy-peer-deps
+```
