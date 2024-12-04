@@ -257,3 +257,8 @@ update project structure:
 ```zsh
 npm i nuqs@2.2.3 --legacy-peer-deps
 ```
+
+- page.tsx -> (home)/page.tsx(update css and Navbar)
+  - (home)/navbar.tsx(SearchInput)
+  - (home)/search-input.tsx(useSearchParam)
+  - hooks/use-search-param.ts
