@@ -262,3 +262,11 @@ npm i nuqs@2.2.3 --legacy-peer-deps
   - (home)/navbar.tsx(SearchInput)
   - (home)/search-input.tsx(useSearchParam)
   - hooks/use-search-param.ts
+
+## Template gallery component
+
+[05:00:54](https://www.youtube.com/watch?v=gq2bbDmSokU&t=18054s) 
+
+- templates-gallery.tsx
+- constants/templates.ts
+- public/templates/xxx.svg
