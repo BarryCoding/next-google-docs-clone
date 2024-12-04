@@ -270,3 +270,36 @@ npm i nuqs@2.2.3 --legacy-peer-deps
 - templates-gallery.tsx
 - constants/templates.ts
 - public/templates/xxx.svg
+
+## Database setup (Convex)
+
+[05:16:25](https://www.youtube.com/watch?v=gq2bbDmSokU&t=18985s) 
+
+- [login to convex](https://dashboard.convex.dev/t/barrycoding/antonio/keen-meadowlark-744/data)
+  - new projectName `antonio`
+  - script `"convex": "convex dev"`
+- [convex docs](https://docs.convex.dev/quickstart/nextjs)
+
+```zsh
+npm install convex@1.17.3 --legacy-peer-deps
+
+npx convex dev
+# login to convex?
+# an existing project
+# 'antonio'
+
+# after add the script to package.json
+npm run convex
+```
+
+- context/convex-client-provider.tsx (paste)
+- update root layout.tsx (convex)
+
+- [schema](https://docs.convex.dev/database/schemas)
+- convex/schema.ts 
+  - defineTable
+  - [index](https://docs.convex.dev/database/indexes/)
+- convex/documents.ts
+  - query `get`
+- (home)/page.tsx 
+  - useQuery
