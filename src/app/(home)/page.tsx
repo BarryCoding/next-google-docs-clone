@@ -7,12 +7,15 @@ import { TemplatesGallery } from './templates-gallery'
 import { api } from 'db/_generated/api'
 import { usePaginatedQuery } from 'convex/react'
 import { DocumentsTable } from './document-table'
+import { useSearchParam } from '@/hooks/use-search-param'
 
 export default function Home() {
+  const [search] = useSearchParam()
+
   // REFACTOR: move it to table component
   const { results, loadMore, status } = usePaginatedQuery(
     api.google_docs_documents.get,
-    {},
+    { search },
     { initialNumItems: 5 },
   )
   return (

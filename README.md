@@ -358,3 +358,10 @@ npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
   - conflicts with dropdown and dialog `modals`
 - remove-dialog
   - ui AlertDialog
+
+## Search documents  (day4)
+
+[06:49:22](https://www.youtube.com/watch?v=gq2bbDmSokU&t=24562s) 
+
+- convex/documents `get`
+- (home)page.tsx useSearchParam

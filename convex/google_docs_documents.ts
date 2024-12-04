@@ -22,13 +22,10 @@ export const create = mutation({
 })
 
 export const get = query({
-  args: { paginationOpts: paginationOptsValidator },
-  // args: { paginationOpts: paginationOptsValidator, search: v.optional(v.string()) },
-  handler: async (ctx, { paginationOpts }) => {
+  args: { paginationOpts: paginationOptsValidator, search: v.optional(v.string()) },
+  handler: async (ctx, { paginationOpts, search }) => {
     const user = await ctx.auth.getUserIdentity()
     if (!user) throw new ConvexError('Unauthorized')
-
-    return await ctx.db.query(TABLE_DOCUMENTS).paginate(paginationOpts)
 
     // const organizationId = (user.organization_id ?? undefined) as string | undefined
 
@@ -42,16 +39,6 @@ export const get = query({
     //     .paginate(paginationOpts)
     // }
 
-    // Personal search
-    // if (search) {
-    //   return await ctx.db
-    //     .query('documents')
-    //     .withSearchIndex('search_title', (q) =>
-    //       q.search('title', search).eq('ownerId', user.subject),
-    //     )
-    //     .paginate(paginationOpts)
-    // }
-
     // All docs inside organization
     // if (organizationId) {
     //   return await ctx.db
@@ -61,12 +48,21 @@ export const get = query({
     //     .paginate(paginationOpts)
     // }
 
+    // Personal search
+    if (search) {
+      return await ctx.db
+        .query(TABLE_DOCUMENTS)
+        .withSearchIndex('search_title', (q) =>
+          q.search('title', search).eq('ownerId', user.subject),
+        )
+        .paginate(paginationOpts)
+    }
     // All personal docs
-    //   return await ctx.db
-    //     .query('documents')
-    //     .withIndex('by_owner_id', (q) => q.eq('ownerId', user.subject))
-    //     .order('desc')
-    //     .paginate(paginationOpts)
+    return await ctx.db
+      .query(TABLE_DOCUMENTS)
+      .withIndex('by_owner_id', (q) => q.eq('ownerId', user.subject))
+      .order('desc')
+      .paginate(paginationOpts)
   },
 })
 
