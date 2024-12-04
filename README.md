@@ -338,3 +338,10 @@ npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
   - TODO: integration with [tanstack](https://docs.convex.dev/client/tanstack-query)
 - templates-gallery.tsx
   - useMutation() create doc
+
+- convex/documents `get` with pagination
+- (home)/page.tsx (+DocumentsTable)
+  - usePaginatedQuery()
+- documents-table.tsx
+  - ui table
+  - DocumentRow

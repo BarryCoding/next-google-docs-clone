@@ -1,5 +1,6 @@
 import { ConvexError, v } from 'convex/values'
 import { mutation, query } from './_generated/server'
+import { paginationOptsValidator } from 'convex/server'
 
 const TABLE_DOCUMENTS = 'google_docs_documents'
 
@@ -21,8 +22,50 @@ export const create = mutation({
 })
 
 export const get = query({
-  args: {},
-  handler: async (ctx) => {
-    return await ctx.db.query('google_docs_documents').collect()
+  args: { paginationOpts: paginationOptsValidator },
+  // args: { paginationOpts: paginationOptsValidator, search: v.optional(v.string()) },
+  handler: async (ctx, { paginationOpts }) => {
+    const user = await ctx.auth.getUserIdentity()
+    if (!user) throw new ConvexError('Unauthorized')
+
+    return await ctx.db.query(TABLE_DOCUMENTS).paginate(paginationOpts)
+
+    // const organizationId = (user.organization_id ?? undefined) as string | undefined
+
+    // Search within organization
+    // if (search && organizationId) {
+    //   return await ctx.db
+    //     .query(TABLE_DOCUMENTS)
+    //     .withSearchIndex('search_title', (q) =>
+    //       q.search('title', search).eq('organizationId', organizationId),
+    //     )
+    //     .paginate(paginationOpts)
+    // }
+
+    // Personal search
+    // if (search) {
+    //   return await ctx.db
+    //     .query('documents')
+    //     .withSearchIndex('search_title', (q) =>
+    //       q.search('title', search).eq('ownerId', user.subject),
+    //     )
+    //     .paginate(paginationOpts)
+    // }
+
+    // All docs inside organization
+    // if (organizationId) {
+    //   return await ctx.db
+    //     .query('documents')
+    //     .withIndex('by_organization_id', (q) => q.eq('organizationId', organizationId))
+    //     .order('desc')
+    //     .paginate(paginationOpts)
+    // }
+
+    // All personal docs
+    //   return await ctx.db
+    //     .query('documents')
+    //     .withIndex('by_owner_id', (q) => q.eq('ownerId', user.subject))
+    //     .order('desc')
+    //     .paginate(paginationOpts)
   },
 })
