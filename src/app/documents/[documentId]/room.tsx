@@ -5,7 +5,8 @@ import { LiveblocksProvider, RoomProvider, ClientSideSuspense } from '@liveblock
 import { useParams } from 'next/navigation'
 import { FullscreenLoader } from '@/components/fullscreen-loader'
 import { toast } from 'sonner'
-import { getUsers } from './actions'
+import { getDocuments, getUsers } from './actions'
+import { Id } from 'db/_generated/dataModel'
 
 type User = { id: string; name: string; avatar: string }
 
@@ -45,11 +46,32 @@ export function Room({ children }: { children: ReactNode }) {
       .map((user) => user.id)
   }
 
+  const handleAuthEndpoint = async () => {
+    const endpoint = '/api/liveblocks-auth'
+    const room = params.documentId as string
+
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      body: JSON.stringify({ room }),
+    })
+
+    return await response.json()
+  }
+
+  const handleResolveRoomsInfo = async ({ roomIds }: { roomIds: string[] }) => {
+    const documents = await getDocuments(roomIds as Id<'google_docs_documents'>[])
+    return documents.map((document) => ({
+      id: document.id,
+      name: document.name,
+    }))
+  }
+
   return (
     <LiveblocksProvider
-      authEndpoint={'/api/liveblocks-auth'}
+      authEndpoint={handleAuthEndpoint}
       resolveUsers={handleResolveUser}
       resolveMentionSuggestions={handleResolveMentionSuggestions}
+      resolveRoomsInfo={handleResolveRoomsInfo}
     >
       <RoomProvider id={params.documentId as string}>
         <ClientSideSuspense fallback={<FullscreenLoader label='Room loading...' />}>

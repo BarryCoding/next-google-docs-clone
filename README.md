@@ -423,3 +423,12 @@ npm i @liveblocks/node@2.12.2 --legacy-peer-deps
   - resolve users mentionSuggestions 
 - `[documentId]/actions.ts`
 - avatars.tsx + liveblocks.config.ts
+
+## Notifications feature
+
+[08:30:35](https://www.youtube.com/watch?v=gq2bbDmSokU&t=30635s) 
+
+- inbox.tsx -> navbar.tsx
+- room.tsx authEndpoint
+- convex/documents `getByIds` + actions.ts
+- global.css liveblocks z-index issue
