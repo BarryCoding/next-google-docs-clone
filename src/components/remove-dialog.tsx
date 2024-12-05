@@ -1,6 +1,6 @@
 'use client'
 
-// import { toast } from 'sonner'
+import { toast } from 'sonner'
 import { useState } from 'react'
 import { useMutation } from 'convex/react'
 
@@ -18,7 +18,6 @@ import {
 
 import { api } from '../../convex/_generated/api'
 import { Id } from '../../convex/_generated/dataModel'
-// import { useRouter } from 'next/navigation'
 
 interface RemoveDialogProps {
   documentId: Id<'google_docs_documents'>
@@ -26,17 +25,15 @@ interface RemoveDialogProps {
 }
 
 export const RemoveDialog = ({ documentId, children }: RemoveDialogProps) => {
-  // const router = useRouter()
   const remove = useMutation(api.google_docs_documents.removeById)
   const [isRemoving, setIsRemoving] = useState(false)
 
   const deleteDocument = () => {
     setIsRemoving(true)
     remove({ id: documentId })
-      // .catch(() => toast.error('Something went wrong'))
+      .catch(() => toast.error('Something went wrong'))
       .then(() => {
-        // toast.success('Document removed')
-        // router.push('/')
+        toast.success('Document removed')
       })
       .finally(() => setIsRemoving(false))
   }

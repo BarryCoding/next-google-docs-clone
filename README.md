@@ -377,3 +377,7 @@ npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
 
 - convex/documents `create` `get` `update`
   - add organizationId
+
+- Toaster
+  - root layout
+  - remove-dialog.tsx rename-dialog.tsx template-gallery.tsx `toast`
