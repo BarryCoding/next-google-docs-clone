@@ -414,3 +414,12 @@ npm i @liveblocks/node@2.12.2 --legacy-peer-deps
 - convex/documents `getById`
 - global error
   - FIXME
+
+## Populate user information
+
+[08:09:06](https://www.youtube.com/watch?v=gq2bbDmSokU&t=29346s) 
+
+- room.tsx
+  - resolve users mentionSuggestions 
+- `[documentId]/actions.ts`
+- avatars.tsx + liveblocks.config.ts
