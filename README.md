@@ -359,9 +359,21 @@ npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
 - remove-dialog
   - ui AlertDialog
 
-## Search documents  (day4)
+## Search documents 
 
 [06:49:22](https://www.youtube.com/watch?v=gq2bbDmSokU&t=24562s) 
 
 - convex/documents `get`
 - (home)page.tsx useSearchParam
+
+## Organizations feature
+
+[06:57:25](https://www.youtube.com/watch?v=gq2bbDmSokU&t=25045s) 
+
+- clerk dashboard -> configure -> organization settings (enable)
+- Clerk dashboard -> Configure -> JWT templates -> `convex`
+  - claims add `"organization_id": {{org.id}}`
+- (home / doc)navbar.tsx OrganizationSwitcher + redirects
+
+- convex/documents `create` `get` `update`
+  - add organizationId
