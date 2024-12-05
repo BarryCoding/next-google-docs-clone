@@ -104,3 +104,13 @@ export const removeById = mutation({
     return await ctx.db.delete(args.id)
   },
 })
+
+export const getById = query({
+  args: { id: v.id(TABLE_DOCUMENTS) },
+  handler: async (ctx, { id }) => {
+    const document = await ctx.db.get(id)
+    if (!document) throw new ConvexError('Document not found')
+
+    return document
+  },
+})

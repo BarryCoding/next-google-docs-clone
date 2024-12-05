@@ -399,3 +399,18 @@ npm i @tiptap/extension-collaboration@2.10.2 @tiptap/extension-collaboration-cur
 
 npx create-liveblocks-app@2.20240816.0 --init --framework react
 ```
+
+## Room permissions
+
+[07:47:12](https://www.youtube.com/watch?v=gq2bbDmSokU&t=28032s) 
+
+- env liveblocks API key
+
+```bash
+npm i @liveblocks/node@2.12.2 --legacy-peer-deps
+```
+
+- api/liveblocks-auth/route.ts
+- convex/documents `getById`
+- global error
+  - FIXME
