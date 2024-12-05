@@ -39,7 +39,6 @@ import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 
 export const Navbar = () => {
   const { editor } = useEditorStore()
-  console.log(`🔎 🔍 ~ Navbar ~ editor:`, editor)
 
   // download function is very limited!
   const onDownload = (blob: Blob, filename: string) => {

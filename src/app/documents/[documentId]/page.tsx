@@ -1,6 +1,6 @@
 import { Editor } from './editor'
 import { Navbar } from './navbar'
-import { Ruler } from './ruler'
+import { Room } from './room'
 import { Toolbar } from './toolbar'
 
 /** nextjs 15: dynamic routing */
@@ -10,12 +10,6 @@ interface DocumentIdPageProps {
 export default async function DocumentIdPage({ params }: DocumentIdPageProps) {
   const { documentId } = await params
   return (
-    // <div className='gb-[#FAFBFD] min-h-screen'>
-    //   <p className='hidden'>documentId: {documentId}</p>
-    //   <Toolbar />
-    //   <Ruler />
-    //   <Editor />
-    // </div>
     <div className='min-h-screen bg-[#FAFBFD]'>
       <p className='hidden'>documentId: {documentId}</p>
       <div className='fixed left-0 right-0 top-0 z-10 flex flex-col gap-y-2 bg-[#FAFBFD] px-4 pt-2 print:hidden'>
@@ -23,8 +17,9 @@ export default async function DocumentIdPage({ params }: DocumentIdPageProps) {
         <Toolbar />
       </div>
       <div className='pt-[114px] print:pt-0'>
-        <Ruler />
-        <Editor />
+        <Room>
+          <Editor />
+        </Room>
       </div>
     </div>
   )

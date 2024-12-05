@@ -381,3 +381,21 @@ npm install @clerk/nextjs@6.5.1 --legacy-peer-deps
 - Toaster
   - root layout
   - remove-dialog.tsx rename-dialog.tsx template-gallery.tsx `toast`
+
+## Collaboration setup (Liveblocks)
+
+[07:23:29](https://www.youtube.com/watch?v=gq2bbDmSokU&t=26609s) 
+
+- [live block](https://liveblocks.io/)
+  - dashboard quick start -> text editor -> liveblocks tiptap -> next.js -> follow the steps
+  - room.tsx, threads.tsx
+  - update page.tsx editor.tsx, ...
+- eslint error fixed
+
+```bash
+npm install @liveblocks/client@2.12.2 @liveblocks/react@2.12.2 @liveblocks/react-ui@2.12.2 @liveblocks/react-tiptap@2.12.2 --legacy-peer-deps
+# error missing deps then
+npm i @tiptap/extension-collaboration@2.10.2 @tiptap/extension-collaboration-cursor@2.10.2 y-protocols@1.0.6 --legacy-peer-deps
+
+npx create-liveblocks-app@2.20240816.0 --init --framework react
+```

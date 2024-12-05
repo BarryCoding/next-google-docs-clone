@@ -16,12 +16,16 @@ import Color from '@tiptap/extension-color'
 import Highlight from '@tiptap/extension-highlight'
 import Link from '@tiptap/extension-link'
 import TextAlign from '@tiptap/extension-text-align'
+import { useLiveblocksExtension } from '@liveblocks/react-tiptap'
 
 import { useEditorStore } from '@/store/use-editor-store'
 import { FontSizeExtension } from '@/extensions/font-size'
 import { LineHeightExtension } from '@/extensions/line-height'
+import { Threads } from './threads'
+import { Ruler } from './ruler'
 
 export const Editor = () => {
+  const LiveblocksExtension = useLiveblocksExtension({ initialContent: 'init' })
   const { setEditor } = useEditorStore()
 
   const editor = useEditor({
@@ -59,7 +63,8 @@ export const Editor = () => {
       },
     },
     extensions: [
-      StarterKit, // https://tiptap.dev/docs/editor/extensions/functionality/starterkit
+      LiveblocksExtension,
+      StarterKit.configure({ history: false }),
       TaskList,
       TaskItem.configure({
         nested: true,
@@ -91,28 +96,14 @@ export const Editor = () => {
         defaultLineHeight: 'normal',
       }),
     ],
-    content: `<p>Hello World! 🌎️</p>
-    <table>
-          <tbody>
-            <tr>
-              <th>Name</th>
-              <th colspan="3">Description</th>
-            </tr>
-            <tr>
-              <td>Cyndi Lauper</td>
-              <td>Singer</td>
-              <td>Songwriter</td>
-              <td>Actress</td>
-            </tr>
-          </tbody>
-        </table>
-    `,
   })
   return (
     // print style control with print:
     <div className='size-full overflow-x-auto bg-[#f9fbfd] px-4 print:overflow-visible print:bg-white print:p-0'>
+      <Ruler />
       <div className='mx-auto flex w-[816px] min-w-max justify-center py-4 print:w-full print:min-w-0 print:py-0'>
         <EditorContent editor={editor} />
+        <Threads editor={editor} />
       </div>
     </div>
   )

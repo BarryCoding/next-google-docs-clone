@@ -597,14 +597,10 @@ export const Toolbar = () => {
       {
         label: 'comment',
         icon: MessageSquarePlusIcon,
-        onClick: () => {
-          console.log('TODO: comment')
-        },
+        isActive: editor?.isActive('liveblocksCommentMark'),
+        onClick: () => editor?.chain().focus().addPendingComment().run(),
       },
     ],
-    // TODO: heading
-    // TODO: font family | size | color | highlight color
-    // TODO: link image content-align line-height list
   ]
   return (
     <div className='flex min-h-10 items-center gap-x-0.5 overflow-x-auto rounded-[24px] bg-[#f1f4f9] px-2.5 py-0.5'>
