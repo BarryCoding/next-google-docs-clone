@@ -1,6 +1,7 @@
 'use client'
 
 import { cn } from '@/lib/utils'
+import { useMutation, useStorage } from '@liveblocks/react'
 import { UnfoldHorizontalIcon } from 'lucide-react'
 import { useRef, useState } from 'react'
 
@@ -11,9 +12,15 @@ const MINIMUM_SPACE = 100
 const markers = Array.from({ length: 817 }, (_, i) => i)
 
 export const Ruler = () => {
-  // TODO: store
-  const [leftMargin, setLeftMargin] = useState(DEFAULT_MARGIN)
-  const [rightMargin, setRightMargin] = useState(DEFAULT_MARGIN)
+  const leftMargin = useStorage((root) => root.leftMargin) ?? DEFAULT_MARGIN
+  const setLeftMargin = useMutation(({ storage }, position: number) => {
+    storage.set('leftMargin', position)
+  }, [])
+
+  const rightMargin = useStorage((root) => root.rightMargin) ?? DEFAULT_MARGIN
+  const setRightMargin = useMutation(({ storage }, position: number) => {
+    storage.set('rightMargin', position)
+  }, [])
 
   const [isDraggingLeft, setIsDraggingLeft] = useState(false)
   const [isDraggingRight, setIsDraggingRight] = useState(false)

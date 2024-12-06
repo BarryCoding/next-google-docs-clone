@@ -23,9 +23,15 @@ import { FontSizeExtension } from '@/extensions/font-size'
 import { LineHeightExtension } from '@/extensions/line-height'
 import { Threads } from './threads'
 import { Ruler } from './ruler'
+import { useStorage } from '@liveblocks/react'
+
+const DEFAULT_MARGIN = 56
 
 export const Editor = () => {
   const LiveblocksExtension = useLiveblocksExtension({ initialContent: 'init' })
+  const leftMargin = useStorage((root) => root.leftMargin) ?? DEFAULT_MARGIN
+  const rightMargin = useStorage((root) => root.rightMargin) ?? DEFAULT_MARGIN
+
   const { setEditor } = useEditorStore()
 
   const editor = useEditor({
@@ -57,7 +63,7 @@ export const Editor = () => {
     editorProps: {
       // style the editor
       attributes: {
-        style: 'padding-left: 56px; padding-right: 56px', // padding will be dynamic
+        style: `padding-left: ${leftMargin}px; padding-right: ${rightMargin}px;`,
         class:
           'flex min-h-[1054px] w-[816px] cursor-text flex-col border border-[#c7c7c7] bg-white pb-10 pr-14 pt-10 focus:outline-none print:border-0',
       },

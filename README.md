@@ -432,3 +432,12 @@ npm i @liveblocks/node@2.12.2 --legacy-peer-deps
 - room.tsx authEndpoint
 - convex/documents `getByIds` + actions.ts
 - global.css liveblocks z-index issue
+
+## Collaborative margin ruler
+
+[08:47:19](https://www.youtube.com/watch?v=gq2bbDmSokU&t=31639s) 
+
+- liveblocks config storage
+- room.tsx initialStorage
+- editor.tsx useStorage
+- ruler.tsx useMutation
