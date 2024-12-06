@@ -39,7 +39,14 @@ import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import { Avatars } from './avatars'
 import { Inbox } from './inbox'
 
-export const Navbar = () => {
+// import { api } from 'db/_generated/api'
+import { Doc } from 'db/_generated/dataModel'
+
+interface NavbarProps {
+  data: Doc<'google_docs_documents'>
+}
+
+export const Navbar = ({ data }: NavbarProps) => {
   const { editor } = useEditorStore()
 
   // download function is very limited!
@@ -58,7 +65,7 @@ export const Navbar = () => {
     const blob = new Blob([JSON.stringify(content)], {
       type: 'application/json',
     })
-    onDownload(blob, `jsonDoc.json`)
+    onDownload(blob, `${data.title}.json`)
   }
   const onSaveHTML = () => {
     if (!editor) return
@@ -67,7 +74,7 @@ export const Navbar = () => {
     const blob = new Blob([content], {
       type: 'text/html',
     })
-    onDownload(blob, `htmlDoc.html`)
+    onDownload(blob, `${data.title}.html`)
   }
   const onSaveText = () => {
     if (!editor) return
@@ -76,7 +83,7 @@ export const Navbar = () => {
     const blob = new Blob([content], {
       type: 'text/plain',
     })
-    onDownload(blob, `txtDoc.txt`)
+    onDownload(blob, `${data.title}.txt`)
   }
 
   const onNewDocument = () => {}
@@ -92,7 +99,7 @@ export const Navbar = () => {
           <Image priority src='/logo.svg' alt='Logo' width={36} height={36} />
         </Link>
         <div className='flex flex-col'>
-          <DocumentInput />
+          <DocumentInput title={data.title} id={data._id} />
           <div className='flex'>
             <Menubar className='h-auto border-none bg-transparent p-0 shadow-none'>
               <MenubarMenu>

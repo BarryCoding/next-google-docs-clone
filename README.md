@@ -441,3 +441,12 @@ npm i @liveblocks/node@2.12.2 --legacy-peer-deps
 - room.tsx initialStorage
 - editor.tsx useStorage
 - ruler.tsx useMutation
+
+## Document information
+
+[08:53:29](https://www.youtube.com/watch?v=gq2bbDmSokU&t=32009s) 
+
+- document.tsx
+- `[documentId]/page.tsx`
+- loading.tsx
+- navbar.tsx props document, update docTitle
