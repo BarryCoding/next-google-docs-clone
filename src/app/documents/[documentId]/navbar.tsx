@@ -39,15 +39,22 @@ import { OrganizationSwitcher, UserButton } from '@clerk/nextjs'
 import { Avatars } from './avatars'
 import { Inbox } from './inbox'
 
-// import { api } from 'db/_generated/api'
+import { api } from 'db/_generated/api'
 import { Doc } from 'db/_generated/dataModel'
+import { useMutation } from 'convex/react'
+import { toast } from 'sonner'
+import { useRouter } from 'next/navigation'
+import { RenameDialog } from '@/components/rename-dialog'
+import { RemoveDialog } from '@/components/remove-dialog'
 
 interface NavbarProps {
   data: Doc<'google_docs_documents'>
 }
 
 export const Navbar = ({ data }: NavbarProps) => {
+  const router = useRouter()
   const { editor } = useEditorStore()
+  const mutation = useMutation(api.google_docs_documents.create)
 
   // download function is very limited!
   const onDownload = (blob: Blob, filename: string) => {
@@ -86,7 +93,17 @@ export const Navbar = ({ data }: NavbarProps) => {
     onDownload(blob, `${data.title}.txt`)
   }
 
-  const onNewDocument = () => {}
+  const onNewDocument = () => {
+    mutation({
+      title: 'Untitled document',
+      initialContent: '',
+    })
+      .catch(() => toast.error('Something went wrong'))
+      .then((id) => {
+        toast.success('Document created')
+        router.push(`/documents/${id}`)
+      })
+  }
 
   const insertTable = ({ rows, cols }: { rows: number; cols: number }) => {
     editor?.chain().focus().insertTable({ rows, cols, withHeaderRow: false }).run()
@@ -136,20 +153,18 @@ export const Navbar = ({ data }: NavbarProps) => {
                     New Document
                   </MenubarItem>
                   <MenubarSeparator />
-                  <MenubarItem
-                    onClick={(e) => e.stopPropagation()}
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    <FilePenIcon className='mr-2 size-4' />
-                    Rename
-                  </MenubarItem>
-                  <MenubarItem
-                    onClick={(e) => e.stopPropagation()}
-                    onSelect={(e) => e.preventDefault()}
-                  >
-                    <TrashIcon className='mr-2 size-4' />
-                    Remove
-                  </MenubarItem>
+                  <RenameDialog documentId={data._id} initialTitle={data.title}>
+                    <MenubarItem onSelect={(e) => e.preventDefault()}>
+                      <FilePenIcon className='mr-2 size-4' />
+                      Rename
+                    </MenubarItem>
+                  </RenameDialog>
+                  <RemoveDialog documentId={data._id}>
+                    <MenubarItem onSelect={(e) => e.preventDefault()}>
+                      <TrashIcon className='mr-2 size-4' />
+                      Remove
+                    </MenubarItem>
+                  </RemoveDialog>
                   <MenubarSeparator />
                   <MenubarItem onClick={() => window.print()}>
                     <PrinterIcon className='mr-2 size-4' />

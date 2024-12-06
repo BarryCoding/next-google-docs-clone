@@ -454,3 +454,8 @@ npm i @liveblocks/node@2.12.2 --legacy-peer-deps
 - DocumentInput props title + id
   - use-debounce.ts
   - icons status
+
+- navbar.tsx
+  - new doc (api.create)
+  - rename doc
+  - remove doc
