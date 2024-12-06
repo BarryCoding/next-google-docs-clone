@@ -1,0 +1,4 @@
+export const DEFAULT_MARGIN = 56
+const BORDER_WIDTH = 1
+
+export const RULER_MARGIN = DEFAULT_MARGIN + BORDER_WIDTH

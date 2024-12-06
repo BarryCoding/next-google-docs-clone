@@ -459,3 +459,12 @@ npm i @liveblocks/node@2.12.2 --legacy-peer-deps
   - new doc (api.create)
   - rename doc
   - remove doc
+
+## Templates initial content & app optimization
+
+[09:27:31](https://www.youtube.com/watch?v=gq2bbDmSokU&t=34051s) 
+
+- editor.tsx 
+- document.tsx
+- threads.tsx
+- constants/editor.ts

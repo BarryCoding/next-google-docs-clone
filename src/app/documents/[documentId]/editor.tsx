@@ -24,11 +24,17 @@ import { LineHeightExtension } from '@/extensions/line-height'
 import { Threads } from './threads'
 import { Ruler } from './ruler'
 import { useStorage } from '@liveblocks/react'
+import { DEFAULT_MARGIN } from '@/constants/editor'
 
-const DEFAULT_MARGIN = 56
+interface EditorProps {
+  initialContent?: string | undefined
+}
 
-export const Editor = () => {
-  const LiveblocksExtension = useLiveblocksExtension({ initialContent: 'init' })
+export const Editor = ({ initialContent }: EditorProps) => {
+  const LiveblocksExtension = useLiveblocksExtension({
+    initialContent,
+    offlineSupport_experimental: true,
+  })
   const leftMargin = useStorage((root) => root.leftMargin) ?? DEFAULT_MARGIN
   const rightMargin = useStorage((root) => root.rightMargin) ?? DEFAULT_MARGIN
 

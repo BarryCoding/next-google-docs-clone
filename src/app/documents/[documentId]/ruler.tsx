@@ -1,23 +1,23 @@
 'use client'
 
+import { RULER_MARGIN } from '@/constants/editor'
 import { cn } from '@/lib/utils'
 import { useMutation, useStorage } from '@liveblocks/react'
 import { UnfoldHorizontalIcon } from 'lucide-react'
 import { useRef, useState } from 'react'
 
-const DEFAULT_MARGIN = 57 // COOL 1px border, 56px padding
 const PAGE_WIDTH = 816
 const MINIMUM_SPACE = 100
 // const markers = Array.from({ length: 83 }, (_, i) => i)
 const markers = Array.from({ length: 817 }, (_, i) => i)
 
 export const Ruler = () => {
-  const leftMargin = useStorage((root) => root.leftMargin) ?? DEFAULT_MARGIN
+  const leftMargin = useStorage((root) => root.leftMargin) ?? RULER_MARGIN
   const setLeftMargin = useMutation(({ storage }, position: number) => {
     storage.set('leftMargin', position)
   }, [])
 
-  const rightMargin = useStorage((root) => root.rightMargin) ?? DEFAULT_MARGIN
+  const rightMargin = useStorage((root) => root.rightMargin) ?? RULER_MARGIN
   const setRightMargin = useMutation(({ storage }, position: number) => {
     storage.set('rightMargin', position)
   }, [])
@@ -59,11 +59,11 @@ export const Ruler = () => {
   }
 
   const handleLeftDoubleClick = () => {
-    setLeftMargin(DEFAULT_MARGIN)
+    setLeftMargin(RULER_MARGIN)
   }
 
   const handleRightDoubleClick = () => {
-    setRightMargin(DEFAULT_MARGIN)
+    setRightMargin(RULER_MARGIN)
   }
 
   return (
