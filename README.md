@@ -450,3 +450,7 @@ npm i @liveblocks/node@2.12.2 --legacy-peer-deps
 - `[documentId]/page.tsx`
 - loading.tsx
 - navbar.tsx props document, update docTitle
+
+- DocumentInput props title + id
+  - use-debounce.ts
+  - icons status
