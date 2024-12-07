@@ -1,3 +1,29 @@
+## Pros and Cons
+
+- Pros: good practice
+  - basic
+    - `react` 19
+    - `next.js` 15 app router
+  - project standard
+    - `eslint`
+    - `prettier`
+  - styling 
+    - tailwind css
+    - UI library 
+      - `shadcn/ui`
+      - `radix/ui `
+  - app state management
+    - `zustand`
+  - libs
+    - `nuqs`
+- Cons:
+  - api: convex
+  - authentication: clerk
+  - library limitations
+    - tiptap
+    - liveblocks
+  - if any of those free services is down, it is hard for me to debug
+
 ## Project setup
 
 [02:13](https://www.youtube.com/watch?v=gq2bbDmSokU&t=133s)
